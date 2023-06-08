@@ -1,0 +1,45 @@
+.discountslip{
+    /* border: 1px solid black; */
+    position: sticky;
+    top: 0px;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #D4424C;
+    z-index: 10;
+}
+
+.slip-left{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.slip-left p{
+    margin-top: 0.5%;
+    color: #fff;
+}
+
+.slip-right{
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.slip-right-box{
+    border: 1px dashed rgba(256, 256, 256, 0.6);
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    height: 75%;
+    margin-top: 0.4%;
+}
+.slip-right-box p{
+    color: white;
+}
