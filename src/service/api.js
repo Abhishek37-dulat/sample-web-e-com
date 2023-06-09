@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5123";
+const URL = "https://task-node-js.onrender.com";
 
 export const authenticatesSignup = async (data) => {
   try {

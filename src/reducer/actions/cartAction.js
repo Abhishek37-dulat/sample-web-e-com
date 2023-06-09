@@ -2,7 +2,7 @@ import axios from "axios";
 
 import * as actionTypes from "../constants/cartConstant";
 
-const URL = "http://localhost:5123";
+const URL = "https://task-node-js.onrender.com";
 
 export const addToCart = (id, quantity) => async (dispatch) => {
     
