@@ -5,9 +5,10 @@ import * as actionTypes from "../constants/cartConstant";
 const URL = "http://localhost:5123/user";
 
 export const addToCart = (id, quantity) => async (dispatch) => {
-    console.log(id,quantity)
+    
   try {
-    const { data } = await axios.get(`${URL}/product/${id}`);
+    const { data } = await axios.get(`${URL}/products/${id}`);
+    console.log(data)
     dispatch({ type: actionTypes.ADD_TO_CART, payload: { ...data, quantity } });
   } catch (error) {
     dispatch({ type: actionTypes.ADD_TO_CART_ERROR, payload: error.message });

@@ -182,4 +182,36 @@ form{
     margin-right: 3.5%;
     margin-top: 0.8%;
     font-size: 12px;
+    cursor: pointer;
+}
+
+
+.logout-button{
+    border-top: 3px solid #7B2589;
+    margin-left: -13%;
+    margin-top: 10%;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    height: 70%;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.logout-button button{
+    padding: 5px;
+    color: #fff;
+    background-color: #7B2589;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    margin-top: 50%;
+    margin-left: 10%;
+    width: 80%;
+    border-radius: 2px;
+    cursor: pointer;
+    justify-content: center;
+
 }

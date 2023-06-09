@@ -3,11 +3,15 @@ import './LoginUser.css'
 import { useNavigate } from 'react-router-dom'
 import {authenticatesLogin, authenticatesSignup} from '../../service/api'
 import {DataContext} from '../../context/DataProvider'
+import { useContext } from 'react'
 
 
 const LoginUser = () => {
     const navigate = useNavigate();
     const [details, setDetails] = useState({email: '', password: ''});
+    
+    const {setAccount} = useContext(DataContext)
+    
     const handleOnChange = (e)=>{
         e.preventDefault()
         setDetails((det)=>({
@@ -16,14 +20,26 @@ const LoginUser = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault()
-        await authenticatesLogin(details);
-        // if(response.status === 200){
-        //   console.log("successfull");  
-        // }
-        setDetails({
+        const response = await authenticatesLogin(details);
+        if(response.status === 200){
+          sessionStorage.setItem(
+            "accessToken",
+            `Bearer ${response.data.accessToken}`
+          );
+          sessionStorage.setItem(
+            "refreshToken",
+            `Bearer ${response.data.refreshToken}`
+          );
+          setAccount(response.data.data.firstname);
+          setDetails({
             email: '',
             password: ''
         })
+        navigate('/')
+        }
+        else{
+          alert('Please Enter Valid Email or password')
+        }
     }
 
     // const loginUser = async () => {

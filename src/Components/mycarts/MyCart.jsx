@@ -1,14 +1,33 @@
-import React from 'react'
+import React, {  useState } from 'react'
 import './MyCart.css'
 import HomeIcon from '@mui/icons-material/Home';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import CartData from './CartData';
 import TotalTable from './TotalTable';
 import { useNavigate } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
 
 
-const MyCart = () => {
+const MyCart = ({token}) => {
+  // const dispatch = useDispatch();
+  const {cartItems} = useSelector((state)=>state.cart);
+  const [totalQ, setTotalQ] = useState(1);
+  console.log(cartItems);
+  // useEffect(()=>{
+  //   dis
+  // })
     const navigate = useNavigate();
+
+    const handlecheckout = () =>{
+      if(token){
+        navigate('/thank')
+      }
+      else{
+        navigate('/login')
+      }
+    }
+
+
   return (
     <div className='mycart'>
       <div className="mycart-top-main">
@@ -41,21 +60,23 @@ const MyCart = () => {
                 <th>Total Price</th>
                 <th>Total Weight</th>          
             </tr>
-            <CartData/>
-            <CartData/>
-            <CartData/>
-            <CartData/>
+            {cartItems?.map((data)=>{
+              
+              return(
+                <CartData id={data.id} image={data.url} name={data.title} price={data.price.cost} weight={100} quant={data.quantity} totalQ={data.price.cost} setTotalQ={setTotalQ}/>    
+              )
+            })}
          </table>
       </div>
       <div className="second-table">
-        <TotalTable/>
+        <TotalTable totalQ={totalQ}/>
       </div>
       <div className="cart-last-button">
         <div>
             <button onClick={()=>navigate('/')}>CONTINUE SHOPPING</button>
         </div>
         <div style={{justifyContent: 'flex-end'}}>
-            <button>CHECKOUT</button>
+            <button onClick={()=>handlecheckout()}>CHECKOUT</button>
         </div>
       </div>
     </div>

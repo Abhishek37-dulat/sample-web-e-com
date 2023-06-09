@@ -21,7 +21,7 @@ const Products = () => {
 
     const addItemToCart= (data) => {
         dispatch(addToCart(data.id, 1))
-        navigate('/cart')
+        // navigate('/cart')
     }
     
   return (

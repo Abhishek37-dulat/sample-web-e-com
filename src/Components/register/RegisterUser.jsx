@@ -20,11 +20,25 @@ const RegisterUser = () => {
     }
     const handleSubmit = async(e) => {
         e.preventDefault();
-        await authenticatesSignup(details);
-        setDetails({
-            firstname: '', lastname: '', email: '', mobile: '', password: ''
-        })
-        setConfirmPassword('');
+        if(details.firstname === '' || details.lastname === '' || details.email === '' || details.mobile === '' || details.password === '' || confirmPassword === ''){
+            console.log(details)
+            return alert("fill all the details carefully!");
+        }
+        else{
+            if(details.password !== confirmPassword){
+                console.log(details.password, confirmPassword)
+                return alert("password and confirmPassword should match!");
+            }
+            else{
+                await authenticatesSignup(details);
+            setDetails({
+                firstname: '', lastname: '', email: '', mobile: '', password: ''
+            })
+            setConfirmPassword('');
+            navigate('/login')
+            }
+        }
+        
     }
 
     console.log(details)
